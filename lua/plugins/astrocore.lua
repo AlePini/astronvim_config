@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -25,18 +25,18 @@ return {
       underline = true,
     },
     -- passed to `vim.filetype.add`
-    filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
-    },
+    -- filetypes = {
+    --   -- see `:h vim.filetype.add` for usage
+    --   extension = {
+    --     foo = "fooscript",
+    --   },
+    --   filename = {
+    --     [".foorc"] = "fooscript",
+    --   },
+    --   pattern = {
+    --     [".*/etc/foo/.*"] = "fooscript",
+    --   },
+    -- },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
@@ -62,6 +62,8 @@ return {
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -79,6 +81,24 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+
+        -- Move current line / block with Alt-j/k a la vscode.
+        ["<A-j>"] = {":m .+1<CR>==", desc = "Move current line / block down"},
+        ["<A-k>"] = {":m .-2<CR>==", desc = "Move current line / block up"},
+      },
+      t = {
+        -- settinge a mapping to false will disable it
+        -- ["<esc>"] = false,
+      },
+      i = {
+        -- Move current line / block with Alt-j/k a la vscode.
+        ["<A-j>"] = {"<Esc>:m .+1<CR>==gi", desc = "Move current line / block down"},
+        ["<A-k>"] = {"<Esc>:m .-2<CR>==gi", desc = "Move current line / block up"},
+      },
+      x = {
+        -- Move current line / block with Alt-j/k a la vscode.
+        ["<A-j>"] = {":m '>+1<CR>gv-gv", desc = "Move current line / block down"},
+        ["<A-k>"] = {":m '<-2<CR>gv-gv", desc = "Move current line / block up"},
       },
     },
   },
