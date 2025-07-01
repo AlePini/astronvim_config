@@ -35,6 +35,14 @@ return {
     ---@type render.md.UserConfig
     opts = {},
   },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = false
+      },
+    },
+  },
 
   -- == Examples of Overriding Plugins ==
 
