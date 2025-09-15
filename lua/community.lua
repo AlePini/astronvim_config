@@ -15,6 +15,7 @@ return {
   { import = "astrocommunity.pack.ansible" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.colorscheme.dracula-nvim" },
   -- import/override with your plugins folder
